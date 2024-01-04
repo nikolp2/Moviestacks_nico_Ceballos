@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <title>Moviestacks Movies</title>
+</head>
+<body class="bg-zinc-900">
+    <header class="bg-zinc-900 inline-flex justify-between border-white">
+        <section class="flex">
+            <div>
+                <img class="w-24" src="./assets/img/Moviestack_isotipo.png" alt="moviestack logo">
+            </div>
+            <div>
+                <img class="w-48" src="./assets/img/Moviestack_logotipo1.png" alt="moviestacks title">
+            </div>
+        </section>
+
+        <section>
+            <nav class="inline-flex flex-wrap">
+                <ul>
+                    <li class="btn w-24 justify-center"><a href="./index.html">HOME</a></li>
+                    <li class="btn w-24 justify-center"><a href="#">MOVIES</a></li>
+                    <li class="btn w-24 justify-center">FAV</li>
+                </ul>
+            </nav>
+        </section>
+
+    </header>
+
+    <div class="inline-flex flex-wrap justify-center" id="cardConteiner"></div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
