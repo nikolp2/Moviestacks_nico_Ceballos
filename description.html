@@ -6,10 +6,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
-    <title>Moviestacks Movies</title>
+    <title>Moviestacks</title>
+    <meta favicon href="./assets/img/Moviestack_favicon.png">
 </head>
 <body class="bg-zinc-900">
-    <header class="bg-zinc-900 inline-flex justify-between border-white">
+    <header class="inline-flex justify-between border-2m border-slate-50">
         <section class="flex">
             <div>
                 <img class="w-24" src="./assets/img/Moviestack_isotipo.png" alt="moviestack logo">
@@ -18,33 +19,32 @@
                 <img class="w-48" src="./assets/img/Moviestack_logotipo1.png" alt="moviestacks title">
             </div>
         </section>
-
-        <section>
-            <nav class="inline-flex flex-wrap">
+        <section class="flex col">
+            <nav class="">
                 <ul>
-                    <li class="btn w-24 justify-center"><a href="./index.html">HOME</a></li>
-                    <li class="btn w-24 justify-center"><a href="#">MOVIES</a></li>
+                    <li class="btn w-24 justify-center"><a href="#">HOME</a></li>
+                    <li class="btn w-24 justify-center"><a href="./movies.html">MOVIES</a></li>
                     <li class="btn w-24 justify-center">FAV</li>
                 </ul>
             </nav>
         </section>
+    </header>
+    <main class="flex-col m-20 ">
+        <div class="w-1/2" id="imageSlot">
 
-    </header>    
-
-    <main>
-        <div>
-            <select id="genres">
-                <option selected>Genre</option>                
-            </select>
-            <input id="inputSearch" type="text" placeholder="Search">
         </div>
-        <div class="inline-flex flex-wrap justify-center" id="cardConteiner"></div>
-    </main>
-    <footer class="bg-zinc-900 border-2m border-slate-50">
-        <p class=" footerText py-4 px-10 text-slate-50 text-center">MindHub Cohort 053 - Ceballos, Nicolas</p>
-    </footer>
+        <div class="w-1/2" id="detailSlot">
 
+        </div>
+        <div class="w-1/2" id="moneySlot">
+
+        </div>
+        <div class="w-1/2" id="statusSlot">
+
+        </div>
+
+    </main>
     <script src="./data.js"></script>
-    <script src="./app.js"></script>
+    <script src="./details.js"></script>
 </body>
 </html>
