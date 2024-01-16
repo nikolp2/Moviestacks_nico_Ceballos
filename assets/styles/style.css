@@ -30,3 +30,18 @@ header{
 .footerText{
     font-family: 'Raleway';
 }
+
+#added-favorite {
+	color: red;
+	display: none;
+}
+
+#favorite-regular.active {
+	background-color: red;
+	display: none;
+}
+
+#added-favorite.active {
+	display: block;
+	color: red;
+}

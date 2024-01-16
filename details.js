@@ -15,7 +15,7 @@ imageSlot.innerHTML = `<img src="${movie.image}" alt="${movie.title}">`
 
 detailSlot.innerHTML = `
         <h2 class=" text-3xl">${movie.title}</h2>;
-        <p>${movie.tagline}</p>
+        <p class="italic">${movie.tagline}</p>
         <p>${movie.genres}</p>
         <p>${movie.overview}</p>
 `
