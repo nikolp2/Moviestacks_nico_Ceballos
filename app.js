@@ -28,20 +28,9 @@ fetch(url, init)
             <img src="https://moviestack.onrender.com/static/${movie.image}" class="card-img" alt="">
             <div class="card-body align-center justify-center">
               <h5 class="card-title my-3 text-center text-lg font-semibold">${movie.title}</h5>
-              <p class="italic footerText my-4 justify-center">${movie.tagline}</p>             
-              <a class="btn inline flex align-center justify-center m-6" href="./description.html?id=${movie.id}"><button type="button">Read more</button></a>
-              <div class="container-buttons-card">
-								<button class="favorite">
-									<i
-										class="fa-regular fa-heart"
-										id="favorite-regular"
-									></i>
-									<i
-										class="fa-solid fa-heart"
-										id="added-favorite"
-									></i>
-								</button>
-              </div>
+              <p class="italic footerText my-4 justify-center">${movie.tagline}</p>
+              <button class="btn align-center justify-center m-6" type="button">fav</button>
+              <a class="btn align-center justify-center m-6" href="./description.html?id=${movie.id}"><button type="button">Read more</button></a>
             </div>          
           </div>
         `;
@@ -73,11 +62,14 @@ fetch(url, init)
       //--------------------------------------    
       
       //list creator
-      function getList(movies) {
-        const moviesList = data.movies
-
-      }
+      const genresArray = getGenres(movies);
       
+      genresArray.forEach(genre => {
+        const option = document.createElement('option');
+        option.value = genre;
+        option.textContent = genre;
+        genres.appendChild(option);
+      })      
       function getGenres(movies) {
         const moviesGenres = data.movies
         .map(movie => movie.genres)
@@ -99,9 +91,23 @@ fetch(url, init)
         return movies.filter(movie => movie.title.toLowerCase().includes(getList.value.toLowerCase()));
       }
       //--------------------------------------
+
+      let favourites = [];
+
+      const favAdder = document.querySelectorAll('.btn');
+      favAdder.forEach(fav => {
+        fav.addEventListener('click', function() {
+          fav.classList.toggle('text-red-500');
+          localStorage.setItem('movies', JSON.stringify(movies));
+          console.log(localStorage)
+          const index = favourites.findIndex(movie => movie.id === movie.id);
+          if (index === -1) {
+            favourites.push(movies);
+          }
+        })
+      })
       
     })
-
     .catch((error) => console.error(error));
 //--------------------------------------
 
