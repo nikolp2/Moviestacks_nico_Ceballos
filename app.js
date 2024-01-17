@@ -29,7 +29,7 @@ fetch(url, init)
             <div class="card-body align-center justify-center">
               <h5 class="card-title my-3 text-center text-lg font-semibold">${movie.title}</h5>
               <p class="italic footerText my-4 justify-center">${movie.tagline}</p>
-              <button class="btn align-center justify-center m-6" type="button">fav</button>
+              <button data-movie-id="${movie.id}" class="fav btn align-center justify-center m-6" type="button">fav</button>
               <a class="btn align-center justify-center m-6" href="./description.html?id=${movie.id}"><button type="button">Read more</button></a>
             </div>          
           </div>
@@ -47,18 +47,23 @@ fetch(url, init)
 
       
       //genre search
-      genres.addEventListener('change', function() {
-        const selectedGenre = genres.value;
+      genreFilter.addEventListener('change', function() {
+        
+        const filteredMovies = filterByGenres(movies, genreFilter);
+        renderCards(filterByName(filteredMovies, getList));
+      });
+      function filterByGenres(selectedGenre){
+        const genre = selectedGenre.value
         let filteredMovies;
-      
+        
         if (selectedGenre == 'All') {
           filteredMovies = movies;
         } else {
           filteredMovies = movies.filter(movie => movie.genres.includes(selectedGenre));
         }
-      
-        renderCards(filteredMovies);
-      });
+
+        return filteredMovies;
+      }
       //--------------------------------------    
       
       //list creator
@@ -84,29 +89,37 @@ fetch(url, init)
       
       //input search
       getList.addEventListener('input', function() {
-        const filteredMovies = filterByName(movies, getList);
-        renderCards(filteredMovies);
+        const filteredMovies = filterByGenres(movies, genreFilter);
+        renderCards(filterByName(filteredMovies, getList));
       });
       function filterByName(movies, getList) {
-        return movies.filter(movie => movie.title.toLowerCase().includes(getList.value.toLowerCase()));
+        const textInput = getList.value;
+        if(!textInput){
+          return movies;
+        }
+        return movies.filter(movie => movie.title.toLowerCase().includes(textInput.toLowerCase()));
       }
       //--------------------------------------
 
-      let favourites = [];
-
-      const favAdder = document.querySelectorAll('.btn');
-      favAdder.forEach(fav => {
-        fav.addEventListener('click', function() {
-          fav.classList.toggle('text-red-500');
-          localStorage.setItem('movies', JSON.stringify(movies));
-          console.log(localStorage)
-          const index = favourites.findIndex(movie => movie.id === movie.id);
-          if (index === -1) {
-            favourites.push(movies);
-          }
-        })
-      })
       
+      cards.addEventListener('click', function(e) {
+        const movieId = e.target.dataset.movieId
+        const favourites = JSON.parse(localStorage.getItem('movies')) || [];
+        if (e.target.classList.contains('fav')) {          
+          if(!favourites.includes(movieId)){
+            favourites.push(movieId);
+            e.target.classList.toggle('text-red-500');
+            return localStorage.setItem('movies', JSON.stringify(favourites));
+          }
+          
+          
+        }
+      })
+
+      //crossfilter
+
+
+
     })
     .catch((error) => console.error(error));
 //--------------------------------------
