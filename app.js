@@ -18,7 +18,7 @@ fetch(url, init)
 .then((response) => response.json())
 .then((data) => {
   const movies = data.movies
-  
+  console.log(movies)
 
   //card creator
 
@@ -76,12 +76,17 @@ fetch(url, init)
       
       //genre search
       genreFilter.addEventListener('change', function() {        
-        const filteredMovies = filterByGenres(movies, genreFilter);
+        let filteredMovies = filterByGenres(movies, genreFilter.value);
+         
+       
         renderCards(filterByName(filteredMovies, getList));
+        
       });
       function filterByGenres(movies, selectedGenre){
-        const genre = selectedGenre.value
+        const genre = selectedGenre
         let filteredMovies;
+
+        
         
         if (genre == 'All') {
           filteredMovies = movies;
@@ -90,6 +95,7 @@ fetch(url, init)
         }
 
         return filteredMovies;
+        
       }
       //--------------------------------------    
       
@@ -105,7 +111,7 @@ fetch(url, init)
         }
         return movies.filter(movie => movie.title.toLowerCase().includes(textInput.toLowerCase()));
       }
-
+      
       //---------------------------------------
       //list creator
       const genresArray = getGenres(movies);
@@ -147,10 +153,9 @@ fetch(url, init)
                 unfav.push(fav);
               }
             });
-
-            localStorage.setItem('movies', JSON.stringify(unfav));
+            localStorage.setItem('movies', JSON.stringify(unfav))
             return favButton.classList.toggle('text-red-500');
-             
+            
           }         
         }
       })
