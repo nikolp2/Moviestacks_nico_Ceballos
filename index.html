@@ -11,15 +11,15 @@
 </head>
 <body class="bg-zinc-900">
     <header class="inline-flex justify-between border-2m border-slate-50">
-        <section class="flex">
+        <div class="flex">
             <div>
                 <img class="w-24" src="./assets/img/Moviestack_isotipo.png" alt="moviestack logo">
             </div>
             <div>
                 <img class="w-48" src="./assets/img/Moviestack_logotipo1.png" alt="moviestacks title">
             </div>
-        </section>
-        <section class="flex col">
+        </div>
+        <div class="flex col">
             <nav class="">
                 <ul>
                     <li class="btn w-24 justify-center"><a href="#">HOME</a></li>
@@ -27,17 +27,22 @@
                     <li class="btn w-24 justify-center"><a href="./favorites.html">FAV</a></li>
                 </ul>
             </nav>
-        </section>
+        </div>
     </header>
 
-    <main class="bg-zinc-900">
-        <div>
-            <img class="my-4 px-10 my-4 px-10 border-2m border-slate-50" src="./assets/img/pngtree-literary-minimalist-film-film-banner-poster-image_188522.jpg" alt="banner">
+    <main class="bg-zinc-900 content-center">
+        <div class="flex justify-center">
+            <img class="my-4 px-10 my-4 px-10 border-2m border-slate-50 justify-center" src="./assets/img/pngtree-literary-minimalist-film-film-banner-poster-image_188522.jpg" alt="banner">
         </div>
 
-        <p class="py-4 px-10 text-slate-50 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam odio suscipit at aspernatur, nesciunt, dolorem rem nam modi accusamus inventore, earum doloremque. Nobis perspiciatis, laudantium quam sint suscipit delectus voluptatem.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quis molestiae temporibus quae aperiam omnis provident, voluptatem ea repellendus sapiente impedit et aspernatur earum tempore fuga sit nihil vero deleniti.
+        <p class="py-4 px-10 text-slate-50 text-center">
+            "Welcome to MovieStacks, where cinematic magic comes to life! 🎬 Explore a world of captivating stories, thrilling adventures, and unforgettable moments. Whether you're a film aficionado or a casual viewer, our curated selection of movies promises to transport you to new realms of entertainment. Grab some popcorn, settle into your favorite spot, and let the magic of movies unfold. Get ready for a journey through genres, emotions, and unparalleled storytelling. Your ticket to an extraordinary cinematic experience awaits – enjoy the show!"
         </p>
+        <div class="flex m-2 justify-around">
+            <button class="btn text-2xl font-extrabold text-purple-700"><a href="./movies.html">TAKE ME TO MOVIES!</a></button>
+            <button class="btn text-2xl font-extrabold text-pink-700"><a href="./favorites.html">TAKE ME TO FAVORITES!</a></button>
+
+        </div>
 
     </main>
 
@@ -53,7 +58,6 @@
 
 
 
-    <!-- <script src="./app.js"></script>
-    <script src="./data.js"></script>     -->
+  
 </body>
 </html>
