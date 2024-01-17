@@ -43,16 +43,29 @@ fetch(url, init)
           }
         });
       });
-    //   console.log(savedMovies);
+    
       favConteiner.innerHTML = savedMovies;
     }
-
-    // favConteiner.addEventListener("click", (e) => {
-    //     if (e.target.id != "") {
-    //         favouritesLocal = favouritesLocal.filter(movie => movie.id != e.target.id)
-    //         localStorage.setItem("favourites", JSON.stringify(favouritesLocal))
-
-    //     }
-    // })
+    favConteiner.addEventListener('click', function(e) {
+        const favButton = e.target
+        const movieId = e.target.dataset.movieId
+        const favourites = JSON.parse(localStorage.getItem('movies')) || [];
+        if (e.target.classList.contains('fav')) {          
+            if(favourites.includes(movieId)) {
+            let unfav = [];
+            favourites.forEach(fav => {
+              if(fav != movieId){
+                unfav.push(fav);
+              }
+            })
+            e.target.classList.toggle('text-red-500');
+            localStorage.setItem('movies', JSON.stringify(unfav));
+            favButton.parentElement.parentElement.remove()
+          }
+          
+          
+        }
+      })
+    
   })
   .catch((error) => console.error(error));
