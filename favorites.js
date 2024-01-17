@@ -11,8 +11,8 @@ const init = {
 fetch(url, init)
   .then((response) => response.json())
   .then((data) => {
-    const movies = data.movies.filter((movie) => movie != null);
-    console.log(movies);
+    const movies = data.movies;
+    
 
     const favConteiner = document.getElementById("favConteiner");
 
@@ -33,10 +33,11 @@ fetch(url, init)
     }
 
     renderCards(movies);
-    function renderCards(filteredMovies) {
+    function renderCards(movies) {
+
       let savedMovies = "";
-      favConteiner.innerHTML = "";
-      filteredMovies.forEach((movie) => {
+
+      movies.forEach((movie) => {
         favouritesLocal.forEach((fav) => {
           if (movie.id == fav) {
             savedMovies += createCard(movie);
@@ -46,11 +47,11 @@ fetch(url, init)
     
       favConteiner.innerHTML = savedMovies;
     }
-    favConteiner.addEventListener('click', function(e) {
-        const favButton = e.target
-        const movieId = e.target.dataset.movieId
+    favConteiner.addEventListener('click', function(event) {
+        const favButton = event.target
+        const movieId = favButton.dataset.movieId
         const favourites = JSON.parse(localStorage.getItem('movies')) || [];
-        if (e.target.classList.contains('fav')) {          
+        if (favButton.classList.contains('fav')) {          
             if(favourites.includes(movieId)) {
             let unfav = [];
             favourites.forEach(fav => {
@@ -58,7 +59,7 @@ fetch(url, init)
                 unfav.push(fav);
               }
             })
-            e.target.classList.toggle('text-red-500');
+            
             localStorage.setItem('movies', JSON.stringify(unfav));
             favButton.parentElement.parentElement.remove()
           }

@@ -17,8 +17,8 @@ const init = {
 fetch(url, init)
 .then((response) => response.json())
 .then((data) => {
-  const movies = data.movies.filter((movie)=> movie != null)
-  console.log(movies)
+  const movies = data.movies
+  
 
   //card creator
 
@@ -123,36 +123,37 @@ fetch(url, init)
         .filter((genre, index, genres) => genres.indexOf(genre) == index);
         return moviesGenres    
       }
+
       console.log(getGenres(movies))
       //--------------------------------------
            
-      cards.addEventListener('click', function(e) {
-        const movieId = e.target.dataset.movieId
+      cards.addEventListener('click', function(event) {
+        const favButton = event.target;
+        const movieId = favButton.dataset.movieId;
         const favourites = JSON.parse(localStorage.getItem('movies')) || [];
-        if (e.target.classList.contains('fav')) {          
+
+        if (favButton.classList.contains('fav')) {  
+
           if(!favourites.includes(movieId)){
             favourites.push(movieId);
-            e.target.classList.toggle('text-red-500');
-            return localStorage.setItem('movies', JSON.stringify(favourites));
+            localStorage.setItem('movies', JSON.stringify(favourites));
+            return favButton.classList.toggle('text-red-500');
+
           } else if(favourites.includes(movieId)) {
             let unfav = [];
+
             favourites.forEach(fav => {
               if(fav != movieId){
                 unfav.push(fav);
               }
-            })
-            e.target.classList.toggle('text-red-500');
-            return localStorage.setItem('movies', JSON.stringify(unfav))
-          }
-          
-          
+            });
+
+            localStorage.setItem('movies', JSON.stringify(unfav));
+            return favButton.classList.toggle('text-red-500');
+             
+          }         
         }
       })
-
-      
-
-
-
     })
     .catch((error) => console.error(error));
 //--------------------------------------
