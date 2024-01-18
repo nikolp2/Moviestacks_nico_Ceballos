@@ -30,27 +30,27 @@ fetch(url, init)
   imageSlot.innerHTML = `<img src="https://moviestack.onrender.com/static/${movieId.image}" alt="${movieId.title}">`
   
   detailSlot.innerHTML = `
-          <h2 class=" text-3xl">${movieId.title}</h2>;
-          <p class="italic">${movieId.tagline}</p>
-          <p>${movieId.genres}</p>
+          <h2 class="mb-3 text-3xl">${movieId.title}</h2>
+          <p class="mb-3 italic">${movieId.tagline}</p>
+          <p class="mb-3">${movieId.genres}</p>
           <p>${movieId.overview}</p>
   `
   
   statusSlot.innerHTML = `
-          <table class="border-slate-50">
-              <tr>
-                  <td>Original Language</td>
-                  <td>${movieId.original_language}</td>
+          <table class="justify-center w-full">
+              <tr class="border">
+                  <td class="border">Original Language</td>
+                  <td class="border">${movieId.original_language}</td>
               </tr>
-              <tr>
+              <tr class="border">
                   <td>Release Date</td>
                   <td>${movieId.release_date}</td>
               </tr>
-              <tr>
+              <tr class="border">
                   <td>Runtime</td>
                   <td>${movieId.runtime}</td>
               </tr>
-              <tr>
+              <tr class="border">
                   <td>Status</td>
                   <td>${movieId.status}</td>
               </tr>
@@ -58,16 +58,16 @@ fetch(url, init)
   `
   
   moneySlot.innerHTML = `
-          <table>
-              <tr>
+          <table class="justify-center w-full">
+              <tr class="border">
                   <td>Vote Average</td>
                   <td>${movieId.vote_average}</td>
               </tr>
-              <tr>
+              <tr class="border">
                   <td>Budget</td>
                   <td>$ ${movieId.budget.toLocaleString('en-US')}</td>
               </tr>
-              <tr>
+              <tr class="border">
                   <td>revenue</td>
                   <td>$ ${movieId.revenue.toLocaleString('en-US')}</td>
               </tr>

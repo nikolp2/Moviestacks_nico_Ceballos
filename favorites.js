@@ -20,12 +20,12 @@ fetch(url, init)
 
     function createCard(movie) {
       return `
-      <div class="card border-slate-100 w-40 p-1 overflow-auto text-'read more' h-64 flex-col justify-between">
+      <div class="card border-slate-100  p-1 overflow-auto text-'read more'  flex-col justify-between">
         <img src="https://moviestack.onrender.com/static/${movie.image}" class="card-img" alt="">
         <div class="card-body align-center justify-center">
           <h5 class="card-title my-3 text-center text-lg font-semibold">${movie.title}</h5>
           <p class="italic footerText my-4 justify-center">${movie.tagline}</p>
-          <button data-movie-id="${movie.id}" class="fav btn align-center justify-center m-6 text-red-500" type="button">fav</button>
+          <button data-movie-id="${movie.id}" class="fav btn align-center justify-center m-6 text-red-500" type="button">favourites</button>
           <a class="btn align-center justify-center m-6" href="./description.html?id=${movie.id}"><button type="button">Read more</button></a>
         </div>          
       </div>
